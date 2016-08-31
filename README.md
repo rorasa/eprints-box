@@ -269,7 +269,7 @@ exit
 
 ### Move MySQL location
 
-The default MySQL location `/var/lib/mysql` will be destroyed along with the virtual machine by `vagrant destrot`. To prevent the loss of data, we will move MySQL data directory to the persistent storage at `/usr/share/eprints3/mysql`.
+The default MySQL location `/var/lib/mysql` will be destroyed along with the virtual machine by `vagrant destroy`. To prevent the loss of data, we will move MySQL data directory to the persistent storage at `/usr/share/eprints3/mysql`.
 
 #### First, stop MySQL service
 ```bash
