@@ -12,9 +12,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-    config.vm.box = "bento/ubuntu-14.04"
-#    config.vm.box = "eprints"
-#    config.vm.box_url = "package.box"
+    config.vm.box = "eprints"
+    config.vm.box_url = "package.box"
 
   # Provision Apache to enable EPrints
     config.vm.provision :shell, path: "bootstrap.sh"
