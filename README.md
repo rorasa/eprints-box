@@ -62,3 +62,32 @@ echo "192.168.33.10     your.repository.domain | sudo tee -a /etc/hosts
 ### 6. Access your repository
 
 Open your web browser. Type in `your.repository.domain` (don't forget to change this to your real domain) into the browser URL box. Suppose that the repository is already created, the homepage of EPrints should show up. Enjoy!
+
+## Day-to-day use of EPrints-box
+
+Now that you have everything setup, to use EPrints-box in a normal day-to-day fashion is easy.
+
+### Start repository server
+
+Just go to your EPrints-box folder and run `vagrant up`
+
+Example
+```bash
+cd eprints-box-<version>
+vagrant up
+```
+
+### Access your repository
+
+Just open your web browser and type in your repository's domain.
+
+### Stop repository server
+
+When you'd like to shutdown the repository server, you have a few options to choose from.
+
+`vagrant suspend` suspends your virtual machine and leaves both the machine itself and its memory state in your harddisk. It is the fastest way to shut it down and boot it up again. However, it uses the biggest amount of disk space on your machine.
+
+`vagrant halt` leaves the virtual machine in your machine after cleanly shut it down first. It is not as fast as the suspend option but requires less disk space.
+
+`vagrant destroy` removes your virtual machine completely. This is the slowest option because a new virtual machine must be copied again at start up. However it takes no more space apart from the EPrint-box data. Your repository data is *not* removed when perform this destroy option.
+
