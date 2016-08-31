@@ -91,3 +91,61 @@ When you'd like to shutdown the repository server, you have a few options to cho
 
 `vagrant destroy` removes your virtual machine completely. This is the slowest option because a new virtual machine must be copied again at start up. However it takes no more space apart from the EPrint-box data. Your repository data is *not* removed when perform this destroy option.
 
+### Create your repository
+
+If this is the first time you use EPrints-box, then you have to create a new repository.
+
+### 1. Get a fresh EPrints-box 
+
+After all the requires dependencies are installed, please download and extract the latest version of EPrints-box from https://github.com/rorasa/eprints-box/releases .
+
+### 2. Start up your repository server
+
+In your terminal, go to the folder where your EPrint-box is.
+```bash
+cd eprints-box-<version>
+vagrant up
+```
+
+### 3. Log in to your server
+
+Log in using SSH
+```bash
+vagrant ssh
+```
+
+You should now at the server's shell `vagrant@vagrant$`. Run this command
+```bash
+sudo su eprints
+```
+to switch to *eprints* admin user. You should now be at `eprints@vagrant$`.
+
+### 4. Create new repository
+
+The instance of EPrints is installed at `/usr/share/eprints3/`. To create a new repository, use command
+```bash
+/usr/share/eprints3/bin/epadmin create
+```
+then follow the on-screen instructions.
+
+Please take note of the *Host Name*. This is your repository's domain (*your.repository.domain*) the you will use to access your repository. It is also the domain name you use [during the setup of your host](https://github.com/rorasa/eprints-box#5-setting-your-host).
+
+When prompt to create a database, use username `root` and password `root`.
+
+### 5. Finalise your repository
+
+After a new repository is created. Do
+```bash
+exit
+```
+to drop back to `vagrant@vagrant$` shell.
+
+Then restart the server by
+```bash
+sudo service apache2 restart
+```
+
+Do `exit` again to leave the server.
+
+Now, supposed that you already [setup your machine's host](https://github.com/rorasa/eprints-box#5-setting-your-host), you can put your repository's domain into your browser. If everything is working properly you should see an EPrints homepage.
+
